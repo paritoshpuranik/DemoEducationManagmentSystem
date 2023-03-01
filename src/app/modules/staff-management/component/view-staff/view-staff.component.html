@@ -1,0 +1,70 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{singleApplication.type === 'add' ? 'Add Staff' : 'View Staff'}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+        <div class="login-container">
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input
+                            formControlName="fullName" 
+                            placeholder="Full Name" 
+                            type="text" 
+                            name="fullName"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f['fullName'].touched && f['fullName'].invalid }"
+                        />
+                        <div *ngIf="f['fullName'].touched && f['fullName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fullName'].errors['required']">Full Name is required</div>
+                            <div *ngIf="f['fullName'].errors['pattern']">Full Name should be alphabets only</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input
+                            formControlName="userName" 
+                            placeholder="User Name" 
+                            type="text" 
+                            name="userName"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f['userName'].touched && f['userName'].invalid }"
+                        />
+                        <div *ngIf="f['userName'].touched && f['userName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['userName'].errors['required']">User Name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="mobile" 
+                            placeholder="Mobile" 
+                            type="number" 
+                            name="mobile"
+                            onKeyPress="if(this.value.length==10) return false;"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f['mobile'].touched && f['mobile'].invalid }"
+                        >
+                        <div *ngIf="f['mobile'].touched && f['mobile'].errors" class="invalid-feedback">
+                            <div *ngIf="f['mobile'].errors['required']">Mobile number is required</div>
+                            <div *ngIf="f['mobile'].errors['pattern']">Contact should start wit 6,7,8,9 and must be of 10 digit.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!staffForm.valid" class="btn btn-success">Add Leave</button>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </form>
+</div>
+
+

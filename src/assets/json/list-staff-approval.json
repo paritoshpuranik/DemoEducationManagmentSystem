@@ -1,0 +1,35 @@
+{
+    "data": "",
+    "response": [
+        {
+            "id": 1,
+            "fromDate": "03-10-2023",
+            "toDate": "03-14-2023",
+            "reason": "Family function"
+        },
+        {
+            "id": 2,
+            "fromDate": "03-25-2023",
+            "toDate": "03-28-2023",
+            "reason": "Vacations"
+        },
+        {
+            "id": 3,
+            "fromDate": "05-20-2023",
+            "toDate": "05-25-2023",
+            "reason": "Vacations"
+        },
+        {
+            "id": 4,
+            "fromDate": "04-10-2023",
+            "toDate": "04-18-2023",
+            "reason": "Personal work"
+        },
+        {
+            "id": 5,
+            "fromDate": "04-20-2023",
+            "toDate": "04-25-2023",
+            "reason": "Medical Emergency"
+        }
+    ]
+}

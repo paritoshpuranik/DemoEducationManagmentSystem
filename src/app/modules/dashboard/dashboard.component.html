@@ -1,0 +1,35 @@
+<div>
+    <div class="card-content">
+        <!-- Role is HOD Start -->
+        <div class="card" *ngIf="role === 'Hod'">
+            <div class="card-body">
+                <h3>Total Number of Staff members</h3>
+                <p>{{totalCountOfLeaves}}</p>
+            </div>
+        </div>
+        
+         <!-- Role is HOD Ends -->
+        <div *ngIf="role !== 'Hod'">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Total Leaves</h3>
+                    <p>{{totalCountOfLeaves}}</p>
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="card-body">
+                    <h3>Total Leaves Approved</h3>
+                    <p>{{approvedCount}}</p>
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="card-body">
+                    <h3>Total Leaves Rejected</h3>
+                    <p>{{rejectedCount}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

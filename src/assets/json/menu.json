@@ -1,0 +1,17 @@
+{
+    "data": "",
+    "response": [
+        {
+            "name": "Dashboard",
+            "routerLink": "dashboard"
+        },
+        {
+            "name": "Staff-Management",
+            "routerLink": "staff-management"
+        },
+        {
+            "name": "Leave-Management",
+            "routerLink": "leave-management"
+        }
+    ]
+}

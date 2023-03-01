@@ -1,0 +1,49 @@
+<div class="leaves-container">
+    <h3>Leave Management</h3>
+    <div *ngIf="role === 'staff'">
+        <button type="submit" class="btn btn-success" (click)="applyForLeaves('add')">Apply for Leaves</button>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">From Date</th>
+                    <th scope="col">To Date</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col" *ngIf="role === 'staff'">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of listOfLeavesStaff">
+                    <th>{{ items.id | number }}</th>
+                    <td>{{ items.fromDate | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ items.toDate | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ items.reason}}</td>
+                    <td  *ngIf="role === 'staff'">{{ items.status}}</td>
+                    <td>
+                        <button (click)="applyForLeaves('view',items)">View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination
+                [collectionSize]="collectionSize"
+                [(page)]="page"
+                [pageSize]="pageSize"
+                (pageChange)="refreshItems()"
+            >
+            </ngb-pagination>
+        
+            <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshItems()">
+                <option [ngValue]="10">10 items per page</option>
+                <option [ngValue]="15">15 items per page</option>
+                <option [ngValue]="20">20 items per page</option>
+            </select>
+        </div>
+    </div>
+</div>

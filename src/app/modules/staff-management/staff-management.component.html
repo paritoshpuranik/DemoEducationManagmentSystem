@@ -1,0 +1,48 @@
+<div class="leaves-container">
+    <h3>Staff Management</h3>
+    <div>
+        <button type="submit" class="btn btn-success" (click)="applyForLeaves('add')">Add New Staff</button>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of staffList">
+                    <th>{{ items.id | number }}</th>
+                    <td>{{ items.fullName }}</td>
+                    <td>{{ items.userName }}</td>
+                    <td>{{ items.mobile }}</td>
+                    <td>
+                        <button class="btn-view" (click)="applyForLeaves('view',items)">View</button>
+                        <button (click)="removeStaff(items)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination
+                [collectionSize]="collectionSize"
+                [(page)]="page"
+                [pageSize]="pageSize"
+                (pageChange)="refreshItems()"
+            >
+            </ngb-pagination>
+        
+            <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshItems()">
+                <option [ngValue]="10">10 items per page</option>
+                <option [ngValue]="15">15 items per page</option>
+                <option [ngValue]="20">20 items per page</option>
+            </select>
+        </div>
+    </div>
+</div>
+

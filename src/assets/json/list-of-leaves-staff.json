@@ -1,0 +1,110 @@
+{
+    "data": "",
+    "response": [
+        {
+            "id": 1,
+            "fromDate": "12-01-2022",
+            "toDate": "12-10-2022",
+            "reason": "Family function",
+            "status": "Approved"
+        },
+        {
+            "id": 2,
+            "fromDate": "04-20-2022",
+            "toDate": "04-25-2022",
+            "reason": "Vacations",
+            "status": "Approved"
+        },
+        {
+            "id": 3,
+            "fromDate": "05-20-2022",
+            "toDate": "05-25-2022",
+            "reason": "Vacations",
+            "status": "Rejected"
+        },
+        {
+            "id": 4,
+            "fromDate": "10-10-2022",
+            "toDate": "10-18-2022",
+            "reason": "Personal work",
+            "status": "Rejected"
+        },
+        {
+            "id": 5,
+            "fromDate": "04-20-2022",
+            "toDate": "04-25-2022",
+            "reason": "Medical Emergency",
+            "status": "Approved"
+        },
+        {
+            "id": 6,
+            "fromDate": "12-28-2022",
+            "toDate": "01-05-2023",
+            "reason": "New-Years",
+            "status": "Approved"
+        },
+        {
+            "id": 7,
+            "fromDate": "10-10-2022",
+            "toDate": "10-18-2022",
+            "reason": "Personal work",
+            "status": "Rejected"
+        },
+        {
+            "id": 8,
+            "fromDate": "05-20-2022",
+            "toDate": "05-25-2022",
+            "reason": "Vacations",
+            "status": "Approved"
+        },
+        {
+            "id": 9,
+            "fromDate": "12-01-2022",
+            "toDate": "12-10-2022",
+            "reason": "Family function",
+            "status": "Approved"
+        },
+        {
+            "id": 10,
+            "fromDate": "04-20-2022",
+            "toDate": "04-25-2022",
+            "reason": "Medical Emergency",
+            "status": "Approved"
+        },
+        {
+            "id": 11,
+            "fromDate": "12-01-2022",
+            "toDate": "12-10-2022",
+            "reason": "Family function",
+            "status": "Approved"
+        },
+        {
+            "id": 12,
+            "fromDate": "12-01-2022",
+            "toDate": "12-10-2022",
+            "reason": "Family function",
+            "status": "Rejected"
+        },
+        {
+            "id": 13,
+            "fromDate": "12-01-2022",
+            "toDate": "12-10-2022",
+            "reason": "Family function",
+            "status": "Rejected"
+        },
+        {
+            "id": 14,
+            "fromDate": "04-20-2022",
+            "toDate": "04-25-2022",
+            "reason": "Medical Emergency",
+            "status": "Approved"
+        },
+        {
+            "id": 15,
+            "fromDate": "02-10-2022",
+            "toDate": "02-15-2022",
+            "reason": "Medical Emergency",
+            "status": "Approved"
+        }
+    ]
+}

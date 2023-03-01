@@ -1,0 +1,14 @@
+<div class="side-nav-content">
+    <ul class="nav-list">
+        <li class="nav-list-item" *ngFor="let items of menuList">
+            <span (click)="onNavigate(items)" >
+                {{items.name}}
+            </span>
+        </li>
+        <li class="nav-list-item">
+            <span (click)="logout()" >
+                Logout
+            </span>
+        </li>
+    </ul>
+</div>

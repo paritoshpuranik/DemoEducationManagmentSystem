@@ -1,0 +1,58 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="login-container">
+            <div class="row title-login">
+                <span class="text-welcome">Welcome Back !!</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="userName" 
+                            placeholder="Username" 
+                            type="userName" 
+                            name="userName"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['userName'].touched && f['userName'].invalid }"
+                        >
+                        <div *ngIf="f['userName'].touched && f['userName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['userName'].errors['required']">User Name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="password" 
+                            placeholder="Password" 
+                            type="password" 
+                            name="password"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['password'].touched && f['password'].invalid }"
+                        >
+                        <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Password is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
+                    </div>
+                </div>
+                <div *ngIf="showErrorMessage">
+                    <span class="error-message">Invalid username and password Please try again</span>
+                </div>
+                <div class="col-md-12 bottom-top">
+                    <div class="form-group">
+                        <p class="register" (click)="goToRegister()">Register</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </form>
+</div>

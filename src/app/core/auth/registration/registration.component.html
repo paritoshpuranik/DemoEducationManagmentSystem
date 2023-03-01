@@ -1,0 +1,124 @@
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="login-container">
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="name" 
+                            placeholder="Name" 
+                            type="text" 
+                            name="name"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['name'].touched && f['name'].invalid }"
+                        >
+                        <div *ngIf="f['name'].touched && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">Name is required</div>
+                            <div *ngIf="f['name'].errors['pattern']">Name should be alphabets only</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="userName" 
+                            placeholder="Username" 
+                            type="userName" 
+                            name="userName"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['userName'].touched && f['userName'].invalid }"
+                        >
+                        <div *ngIf="f['userName'].touched && f['userName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['userName'].errors['required']">User Name is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="email" 
+                            placeholder="Email" 
+                            type="email" 
+                            name="email"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            (change)="validateEmail($event)"
+                            [ngClass]="{ 'is-invalid': f['email'].touched && f['email'].invalid }"
+                        >
+                        <div *ngIf="f['email'].touched && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['pattern']">Email should must be example@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="contactNumber" 
+                            placeholder="Contact Number" 
+                            type="number" 
+                            name="contactNumber"
+                            class="form-control"
+                            onKeyPress="if(this.value.length==10) return false;"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['contactNumber'].touched && f['contactNumber'].invalid }"
+                        >
+                        <div *ngIf="f['contactNumber'].touched && f['contactNumber'].errors" class="invalid-feedback">
+                            <div *ngIf="f['contactNumber'].errors['required']">Contact Number is required</div>
+                            <div *ngIf="f['contactNumber'].errors['pattern']">Contact should start wit 6,7,8,9 and must be of 10 digit.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                            <select
+                                formControlName="department" 
+                                placeholder="Department" 
+                                name="department"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': f['department'].touched && f['department'].invalid }"
+                            >
+                            <option value="">Choose Department</option>
+                            <option value="science">Science</option>
+                            <option value="commerce">Commerce</option>
+                            <option value="arts">Arts</option>
+                           
+                        </select>
+                        <!-- error block -->
+                        <div *ngIf="f['department'].touched && f['department'].errors" class="invalid-feedback">
+                            <div *ngIf="f['department'].errors['required']">Department is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input 
+                            formControlName="password" 
+                            placeholder="Password" 
+                            type="password" 
+                            name="password"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': f['password'].touched && f['password'].invalid }"
+                        >
+                        <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Password is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

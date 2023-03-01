@@ -1,0 +1,41 @@
+{
+    "data": "",
+    "response": [
+        {
+            "id": 1,
+            "name": "Johnny",
+            "userName": "johnny",
+            "role": "Hod",
+            "email": "johnny@gmail.com",
+            "contact": 9970299047,
+            "department": "Hod"
+        },
+        {
+            "id": 2,
+            "name": "Bern",
+            "userName": "Bern",
+            "role": "Hod",
+            "email": "bern12@gmail.com",
+            "contact": 9970289000,
+            "department": "Hod"
+        },
+        {
+            "id": 3,
+            "name": "Bridge",
+            "userName": "BridgeStone",
+            "role": "staff",
+            "email": "bridgestone1991@gmail.com",
+            "contact": 9970874567,
+            "department": "staff"
+        },
+        {
+            "id": 4,
+            "name": "Johnny Wood",
+            "userName": "johnnyWood",
+            "role": "staff",
+            "email": "johnnyWood@gmail.com",
+            "contact": 9970299084,
+            "department": "staff"
+        }
+    ]
+}    

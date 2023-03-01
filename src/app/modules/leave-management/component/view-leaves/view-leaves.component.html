@@ -1,0 +1,104 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{singleApplication.type === 'add' ? 'Add Leaves' : 'View Leaves'}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="leavesForm" (ngSubmit)="onSubmit()">
+        <div class="login-container">
+            <div class="row">
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input
+                            class="form-control"
+                            formControlName="fromDate"
+                            placeholder="Form Date"
+                            name="dp"
+                            ngbDatepicker
+                            #d="ngbDatepicker"
+                            (click)="d.toggle()"
+                            (ngModelChange) = "onSelect($event)"
+                            [ngClass]="{ 'is-invalid': f['fromDate'].touched && f['fromDate'].invalid }"
+                        />
+                        <div *ngIf="f['fromDate'].touched && f['fromDate'].errors" class="invalid-feedback">
+                            <div *ngIf="f['fromDate'].errors['required']">From Date is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <input
+                            class="form-control"
+                            formControlName="toDate"
+                            placeholder="To Date"
+                            name="dp"
+                            ngbDatepicker
+                            #e="ngbDatepicker"
+                            [minDate]="minDate"
+                            [maxDate]="maxDate"
+                            (click)="e.toggle()"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['toDate'].touched && f['toDate'].invalid }"
+                        />
+                        <div *ngIf="f['toDate'].touched && f['toDate'].errors" class="invalid-feedback">
+                            <div *ngIf="f['toDate'].errors['required']">To Date is required</div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin">
+                    <div class="form-group">
+                        <textarea
+                            formControlName="reason" 
+                            placeholder="Reason" 
+                            type="reason" 
+                            name="reason"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                            [ngClass]="{ 'is-invalid': f['reason'].touched && f['reason'].invalid }"
+                        >
+
+                        </textarea>
+                        <div *ngIf="f['reason'].touched && f['reason'].errors" class="invalid-feedback">
+                            <div *ngIf="f['reason'].errors['required']">Reason is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 bottom-margin" *ngIf="role === 'Hod'">
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" value="approved" formControlName="status">
+                                <span>Approved</span>
+                            </label>
+                        <label>
+                            <input type="radio" value="reject" formControlName="status">
+                            <span>Reject</span>
+                        </label>
+                    </div>
+                </div>    
+                
+                <div class="col-md-12 bottom-margin" *ngIf="singleApplication?.type !== 'add' && role !== 'Hod'">
+                    <div class="form-group">
+                        <input 
+                            formControlName="status" 
+                            placeholder="Status" 
+                            type="status" 
+                            name="status"
+                            class="form-control"
+                            [matKeyboard]="'Azərbaycanca'"
+                        >
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!leavesForm.valid" class="btn btn-success">Add Leave</button>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </form>
+</div>
+
