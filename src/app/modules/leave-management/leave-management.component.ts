@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Base } from '@core/base';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GetUserListTableEnum, IApiResponseObj, IListOfLeaves, LeaveManagementService, SessionStorageService, TypeOfRole } from '@shared/index';
+import { GetUserListTableEnum, IApiResponseObj, IListOfLeaves, ISendDataObj, LeaveManagementService, SessionStorageService, TypeOfContent, TypeOfRole } from '@shared/index';
 import { takeUntil } from 'rxjs';
 import { ViewLeavesComponent } from './component/view-leaves/view-leaves.component';
 
@@ -39,9 +39,9 @@ export class LeaveManagementComponent extends Base implements OnInit {
     getLeavesOfStaff() {
         this.leaveManagementService.getLeavesOfStaff() 
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (menu: IApiResponseObj) => {
-                this.listOfLeaves = menu.response;
-                this.listOfLeavesStaff = menu.response;
+            next: (menu: IListOfLeaves[]) => {
+                this.listOfLeaves = menu;
+                this.listOfLeavesStaff = menu;
                 this.collectionSize = this.listOfLeaves.length;
                 this.refreshItems();
             }
@@ -51,9 +51,9 @@ export class LeaveManagementComponent extends Base implements OnInit {
     getListOfLeavesApproval() {
         this.leaveManagementService.getListOfLeavesApproval() 
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (menu: IApiResponseObj) => {
-                this.listOfLeaves = menu.response;
-                this.listOfLeavesStaff = menu.response;
+            next: (menu: IListOfLeaves[]) => {
+                this.listOfLeaves = menu;
+                this.listOfLeavesStaff = menu;
                 this.collectionSize = this.listOfLeaves.length;
                 this.refreshItems();
             }
@@ -79,7 +79,45 @@ export class LeaveManagementComponent extends Base implements OnInit {
         // This will handle the request once modal is closed.
         modalRef.componentInstance.passEntry
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (item: IListOfLeaves) => {
+            next: (item: ISendDataObj) => {
+                if(item.type === TypeOfContent.add) {
+                    let lastElement = this.listOfLeavesStaff[this.listOfLeavesStaff.length - 1];
+                    let data = {
+                        id: lastElement.id + 1,
+                        fromDate: item?.items?.fromDate,
+                        toDate: item?.items?.toDate,
+                        reason: item?.items.reason,
+                        status: item?.items?.status
+                    }
+                    this.leaveManagementService.applyForLeaves(data)
+                    .pipe(takeUntil(this.destroy$)).subscribe({
+                        next: (res: any) => {
+                            if( this.role === TypeOfRole.hod) {
+                                this.getListOfLeavesApproval();
+                            } else {
+                                this.getLeavesOfStaff();
+                            }
+                        }
+                    })
+                } else {
+                    let data = {
+                        id: item?.items?.id,
+                        fromDate: item?.items?.fromDate,
+                        toDate: item?.items?.toDate,
+                        reason: item?.items.reason,
+                        status: item?.items?.status
+                    }
+                    this.leaveManagementService.updateStatusOfLeaves(data)
+                    .pipe(takeUntil(this.destroy$)).subscribe({
+                        next: (res: any) => {
+                            if( this.role === TypeOfRole.hod) {
+                                this.getListOfLeavesApproval();
+                            } else {
+                                this.getLeavesOfStaff();
+                            }
+                        }
+                    })
+                }
             }
         })
     }

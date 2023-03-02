@@ -1,0 +1,249 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Johnny",
+      "userName": "johnny",
+      "role": "Hod",
+      "email": "johnny@gmail.com",
+      "contact": 9970299047,
+      "department": "Hod",
+      "password": "Test@1234"
+    },
+    {
+      "id": 2,
+      "name": "Bern",
+      "userName": "Bern",
+      "role": "Hod",
+      "email": "bern12@gmail.com",
+      "contact": 9970289000,
+      "department": "Hod",
+      "password": "Test@1234"
+    },
+    {
+      "id": 3,
+      "name": "Bridge",
+      "userName": "BridgeStone",
+      "role": "staff",
+      "email": "bridgestone1991@gmail.com",
+      "contact": 9970874567,
+      "department": "staff",
+      "password": "Test@1234"
+    },
+    {
+      "id": 4,
+      "name": "Johnny Wood",
+      "userName": "johnnyWood",
+      "role": "staff",
+      "email": "johnnyWood@gmail.com",
+      "contact": 9970299084,
+      "department": "staff",
+      "password": "Test@1234"
+    },
+    {
+      "name": "Paritosh",
+      "userName": "pparitosh",
+      "contactNumber": 9908798000,
+      "department": "staff",
+      "email": "t***@gmail.com",
+      "password": "Test@1234",
+      "id": 5
+    },
+    {
+      "name": "Test",
+      "userName": "TestName",
+      "contactNumber": 8899987779,
+      "department": "Hod",
+      "email": "t***@gmail.com",
+      "password": "Test@1234",
+      "id": 6
+    }
+  ],
+  "menu": [
+    {
+      "name": "Dashboard",
+      "routerLink": "dashboard"
+    },
+    {
+      "name": "Staff-Management",
+      "routerLink": "staff-management"
+    },
+    {
+      "name": "Leave-Management",
+      "routerLink": "leave-management"
+    }
+  ],
+  "listStaffApproval": [
+    {
+      "id": 1,
+      "fromDate": "3-10-2023",
+      "toDate": "3-14-2023",
+      "reason": "Family functionss",
+      "status": "approved"
+    },
+    {
+      "id": 2,
+      "fromDate": "03-25-2023",
+      "toDate": "03-28-2023",
+      "reason": "Vacations"
+    },
+    {
+      "id": 3,
+      "fromDate": "5-20-2023",
+      "toDate": "5-25-2023",
+      "reason": "Vacations",
+      "status": "reject"
+    },
+    {
+      "id": 4,
+      "fromDate": "04-10-2023",
+      "toDate": "04-18-2023",
+      "reason": "Personal work"
+    },
+    {
+      "id": 5,
+      "fromDate": "04-20-2023",
+      "toDate": "04-25-2023",
+      "reason": "Medical Emergency"
+    }
+  ],
+  "listOfStaff": [
+    {
+      "id": 1,
+      "fullName": "Testtest",
+      "userName": "testets",
+      "mobile": 8978967800
+    },
+    {
+      "id": 4,
+      "fullName": "Test",
+      "userName": "test",
+      "mobile": 8898979988
+    },
+    {
+      "id": 5,
+      "fullName": "TestUser",
+      "userName": "user1",
+      "mobile": 9898797897
+    },
+    {
+      "id": 6,
+      "fullName": "Test",
+      "userName": "Testuser",
+      "mobile": 8987977900
+    },
+    {
+      "id": 7,
+      "fullName": "Test",
+      "userName": "TestName",
+      "mobile": 8899987779
+    }
+  ],
+  "listOfLeaveStaff": [
+    {
+      "id": 1,
+      "fromDate": "12-01-2022",
+      "toDate": "12-10-2022",
+      "reason": "Family function",
+      "status": "Approved"
+    },
+    {
+      "id": 2,
+      "fromDate": "04-20-2022",
+      "toDate": "04-25-2022",
+      "reason": "Vacations",
+      "status": "Approved"
+    },
+    {
+      "id": 3,
+      "fromDate": "05-20-2022",
+      "toDate": "05-25-2022",
+      "reason": "Vacations",
+      "status": "Rejected"
+    },
+    {
+      "id": 4,
+      "fromDate": "10-10-2022",
+      "toDate": "10-18-2022",
+      "reason": "Personal work",
+      "status": "Rejected"
+    },
+    {
+      "id": 5,
+      "fromDate": "04-20-2022",
+      "toDate": "04-25-2022",
+      "reason": "Medical Emergency",
+      "status": "Approved"
+    },
+    {
+      "id": 6,
+      "fromDate": "12-28-2022",
+      "toDate": "01-05-2023",
+      "reason": "New-Years",
+      "status": "Approved"
+    },
+    {
+      "id": 7,
+      "fromDate": "10-10-2022",
+      "toDate": "10-18-2022",
+      "reason": "Personal work",
+      "status": "Rejected"
+    },
+    {
+      "id": 8,
+      "fromDate": "05-20-2022",
+      "toDate": "05-25-2022",
+      "reason": "Vacations",
+      "status": "Approved"
+    },
+    {
+      "id": 9,
+      "fromDate": "12-01-2022",
+      "toDate": "12-10-2022",
+      "reason": "Family function",
+      "status": "Approved"
+    },
+    {
+      "id": 10,
+      "fromDate": "04-20-2022",
+      "toDate": "04-25-2022",
+      "reason": "Medical Emergency",
+      "status": "Approved"
+    },
+    {
+      "id": 11,
+      "fromDate": "12-01-2022",
+      "toDate": "12-10-2022",
+      "reason": "Family function",
+      "status": "Approved"
+    },
+    {
+      "id": 12,
+      "fromDate": "12-01-2022",
+      "toDate": "12-10-2022",
+      "reason": "Family function",
+      "status": "Rejected"
+    },
+    {
+      "id": 13,
+      "fromDate": "12-01-2022",
+      "toDate": "12-10-2022",
+      "reason": "Family function",
+      "status": "Rejected"
+    },
+    {
+      "id": 14,
+      "fromDate": "04-20-2022",
+      "toDate": "04-25-2022",
+      "reason": "Medical Emergency",
+      "status": "Approved"
+    },
+    {
+      "id": 15,
+      "fromDate": "02-10-2022",
+      "toDate": "02-15-2022",
+      "reason": "Medical Emergency",
+      "status": "Approved"
+    }
+  ]
+}

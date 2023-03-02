@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppConfig } from '@core/index';
-import { HttpService, IApiResponseObj } from '@shared/index';
+import { HttpService, IApiResponseObj, IListOfLeaves } from '@shared/index';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,11 +12,19 @@ export class LeaveManagementService {
         private readonly httpService: HttpService
     ) { }
 
-    getLeavesOfStaff(): Observable<IApiResponseObj> {
+    getLeavesOfStaff(): Observable<IListOfLeaves[]> {
         return this.httpService.get(AppConfig.endPoints.leavesManagement.getLeavesOfStaff);
     }
 
-    getListOfLeavesApproval(): Observable<IApiResponseObj> {
+    getListOfLeavesApproval(): Observable<IListOfLeaves[]> {
         return this.httpService.get(AppConfig.endPoints.leavesManagement.getLeavesOfStaffForApproval);
+    }
+
+    applyForLeaves (data: IListOfLeaves): Observable<IListOfLeaves[]> {
+        return this.httpService.post(AppConfig.endPoints.leavesManagement.applyForLeaves, data);
+    }
+
+    updateStatusOfLeaves(data: IListOfLeaves): Observable<IListOfLeaves[]> {
+        return this.httpService.put(AppConfig.endPoints.leavesManagement.updateStatusOfLeaves +'/'+ data.id, data);
     }
 }

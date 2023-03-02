@@ -8,7 +8,8 @@
             "role": "Hod",
             "email": "johnny@gmail.com",
             "contact": 9970299047,
-            "department": "Hod"
+            "department": "Hod",
+            "password": "Test@123"
         },
         {
             "id": 2,
@@ -17,7 +18,8 @@
             "role": "Hod",
             "email": "bern12@gmail.com",
             "contact": 9970289000,
-            "department": "Hod"
+            "department": "Hod",
+            "password": "Test@123"
         },
         {
             "id": 3,
@@ -26,7 +28,8 @@
             "role": "staff",
             "email": "bridgestone1991@gmail.com",
             "contact": 9970874567,
-            "department": "staff"
+            "department": "staff",
+            "password": "Test@123"
         },
         {
             "id": 4,
@@ -35,7 +38,8 @@
             "role": "staff",
             "email": "johnnyWood@gmail.com",
             "contact": 9970299084,
-            "department": "staff"
+            "department": "staff",
+            "password": "Test@123"
         }
     ]
 }    

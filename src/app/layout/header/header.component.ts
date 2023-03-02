@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '@shared/index';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-    constructor() { }
-
+  name!: string;
+    constructor(
+      public readonly sessionStorageService: SessionStorageService
+    ) { }
+    
     ngOnInit(): void {
+      this.name  = this.sessionStorageService.getUser().name;
     }
 
 }

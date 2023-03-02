@@ -7,6 +7,7 @@
             <div class="row">
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>User Name</label>
                         <input 
                             formControlName="userName" 
                             placeholder="Username" 
@@ -24,6 +25,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>Password</label>
                         <input 
                             formControlName="password" 
                             placeholder="Password" 
@@ -35,6 +37,7 @@
                         >
                         <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
                             <div *ngIf="f['password'].errors['required']">Password is required</div>
+                            <div *ngIf="f['password'].errors['pattern']">Password must be minimum 8 character(1 capital letter, 1 symbol, 1 special character)</div>
                         </div>
                     </div>
                 </div>

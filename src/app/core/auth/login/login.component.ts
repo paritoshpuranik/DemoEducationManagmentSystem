@@ -5,7 +5,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs';
 import { AppConfig } from '@core/config';
-import { IApiResponseObj, IUsers, Regex, SessionStorageService, UsersService } from '@shared/index';
+import { IUsers, Regex, SessionStorageService, UsersService, AuthService } from '@shared/index';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,8 @@ export class LoginComponent extends Base implements OnInit {
         private readonly fb: FormBuilder,
         private readonly router: Router,
         private readonly usersService: UsersService,
-        private readonly sessionStorageService: SessionStorageService
+        private readonly sessionStorageService: SessionStorageService,
+        private readonly authService: AuthService
     ) { 
         super();
     }
@@ -30,7 +31,7 @@ export class LoginComponent extends Base implements OnInit {
     ngOnInit(): void {
         this.loginForm = this.fb.group({
             userName:  new FormControl('', [Validators.required]),
-            password: new FormControl('', [Validators.required])
+            password: new FormControl('', [Validators.required, Validators.pattern(Regex.regexPassword)])
         });
         this.getAllUsers();
     }
@@ -42,8 +43,8 @@ export class LoginComponent extends Base implements OnInit {
     getAllUsers() {
         this.usersService.getAllUser()
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (user: IApiResponseObj) => {
-                this.usersList = user.response;
+            next: (user: IUsers[]) => {
+                this.usersList = user;
             }
         })
     }
@@ -53,7 +54,7 @@ export class LoginComponent extends Base implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-        const result = this.usersList.find( ({ userName }) => userName === this.loginForm.value.userName );
+        const result = this.usersList.find( ({ userName, password }) => userName === this.loginForm.value.userName && password === this.loginForm.value.password);
         if(result) {
             this.sessionStorageService.setUser(result);
             this.router.navigate([AppConfig.routes.modules.dashboard]);

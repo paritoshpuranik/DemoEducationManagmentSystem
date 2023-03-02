@@ -8,6 +8,7 @@
             <div class="row">
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>Full Name</label>
                         <input
                             formControlName="fullName" 
                             placeholder="Full Name" 
@@ -25,6 +26,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>User Name</label>
                         <input
                             formControlName="userName" 
                             placeholder="User Name" 
@@ -41,6 +43,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>mobile</label>
                         <input 
                             formControlName="mobile" 
                             placeholder="Mobile" 
@@ -57,8 +60,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <button type="submit" [disabled]="!staffForm.valid" class="btn btn-success">Add Leave</button>
+                    <div class="form-group" *ngIf="singleApplication?.type !== 'view'">
+                        <button type="submit" [disabled]="!staffForm.valid" class="btn btn-success">Save</button>
                     </div>
                 </div>
               

@@ -23,12 +23,14 @@ export class ViewStaffComponent implements OnInit {
 
     ngOnInit(): void {
         this.staffForm = this.fb.group({
-            fullName:  new FormControl('', [Validators.required, Validators.pattern(Regex.regexAlphabets)]),
+            id: new FormControl(null),
+            fullName:  new FormControl('', [Validators.required]),
             userName: new FormControl('', [Validators.required,]),
             mobile: new FormControl('', [Validators.required, Validators.pattern(Regex.regexMobileNumber)]),
         });
         if(this.singleApplication?.type !== TypeOfContent.add) {
             this.staffForm.patchValue(this.singleApplication?.items);
+            this.staffForm.disable();
         }
     }
 
@@ -45,7 +47,11 @@ export class ViewStaffComponent implements OnInit {
         if (this.staffForm.invalid) {
             return;
         }
-        this.passEntry.emit(this.staffForm?.value);
+        const data = {
+            type: this.singleApplication?.type,
+            items: this.staffForm?.value
+        }
+        this.passEntry.emit(data );
         this.close();
     }
 

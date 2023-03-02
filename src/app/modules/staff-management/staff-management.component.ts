@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Base } from '@core/base';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GetUserListTableEnum, IApiResponseObj, StaffManagementService } from '@shared/index';
+import { GetUserListTableEnum, IApiResponseObj, ISendDataObj, StaffManagementService, TypeOfContent } from '@shared/index';
 import { IListOfStaff } from '@shared/models/staff-management.model';
 import { takeUntil } from 'rxjs';
 import { ViewStaffComponent } from './component/view-staff/view-staff.component';
@@ -33,9 +33,9 @@ export class StaffManagementComponent extends Base implements OnInit {
     getStaffDetails() {
         this.staffManagementService.getStaffDetails()
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (staff: IApiResponseObj) => {
-                this.listOfStaff = staff?.response;
-                this.staffList = staff?.response;
+            next: (staff: IListOfStaff[]) => {
+                this.listOfStaff = staff;
+                this.staffList = staff;
                 this.collectionSize = this.listOfStaff.length;
                 this.refreshItems();
             }
@@ -61,15 +61,49 @@ export class StaffManagementComponent extends Base implements OnInit {
         // This will handle the request once modal is closed.
         modalRef.componentInstance.passEntry
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (item: IListOfStaff) => {
+            next: (item: ISendDataObj) => {
+                if(item.type === TypeOfContent.add) {
+                    let lastElement = this.listOfStaff[this.listOfStaff.length - 1];
+                    let data = {
+                      id: lastElement.id + 1,
+                        fullName: item?.items?.fullName,
+                        userName: item?.items?.userName,
+                        mobile: item?.items?.mobile
+                    }
+                    this.staffManagementService.createStaff(data)
+                    .pipe(takeUntil(this.destroy$)).subscribe({
+                        next: (res: any) => {
+                            this.getStaffDetails();
+                        }
+                    })
+                    
+                } else {
+                    let data = {
+                        id: item?.items?.id,
+                        fullName: item?.items?.fullName,
+                        userName: item?.items?.userName,
+                        mobile: item?.items?.mobile
+                    }
+                    this.staffManagementService.updateStaff(data)
+                    .pipe(takeUntil(this.destroy$)).subscribe({
+                        next: (res: any) => {
+                            this.getStaffDetails();
+                        }
+                    })
+                }
             }
         })
     }
 
     // Delete staff by Id
-    removeStaff(items: IListOfStaff) {
-        if(confirm(`"Are you sure to delete " ${items?.fullName}`)) {
-            this.staffList = this.listOfStaff.filter(item => item.id !== items?.id)
+    removeStaff(id: number) {
+        if(confirm(`"Are you sure to delete "`)) {
+            this.staffManagementService.deleteStaff(id)
+            .pipe(takeUntil(this.destroy$)).subscribe({
+                next: (res: any) => {
+                    this.getStaffDetails();
+                }
+            })
         }
     }
 

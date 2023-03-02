@@ -28,8 +28,8 @@ export class SideNavComponent extends Base implements OnInit {
     getListOfMenu() {
         this.menuService.getMenus() 
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (menu: IApiResponseObj) => {
-                this.menuList = menu.response;
+            next: (menu: ISideNavbarMenu[]) => {
+                this.menuList = menu;
                 if(this.role === TypeOfRole.staff) {
                     this.menuList = this.menuList.filter(item => item.name !== MenuType.staffManagement)
                 }

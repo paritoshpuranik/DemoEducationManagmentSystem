@@ -30,8 +30,8 @@ export class DashboardComponent extends Base implements OnInit {
     getLeavesOfStaff() {
         this.leaveManagementService.getLeavesOfStaff() 
         .pipe(takeUntil(this.destroy$)).subscribe({
-            next: (menu: IApiResponseObj) => {
-                this.listOfLeaves = menu?.response;
+            next: (menu: IListOfLeaves[]) => {
+                this.listOfLeaves = menu;
                 this.totalCountOfLeaves = this.listOfLeaves?.length;
                 this.totalLeaveApprovedAndRejected();
             }

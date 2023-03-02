@@ -9,20 +9,25 @@ interface AppConfig {
 export const AppConfig: AppConfig = {
     endPoints: {
         auth: {
-            
+           login: 'users' 
         },
         menu: {
-            getMenus: '/assets/json/menu.json',
+            getMenus: 'menu ',
         },
         users: {
-            getAllUser: '/assets/json/user.json',
+            getAllUser: 'users',
+            createUser: 'users'
         },
         leavesManagement: {
-            getLeavesOfStaff: '/assets/json/list-of-leaves-staff.json',
-            getLeavesOfStaffForApproval :'/assets/json/list-staff-approval.json'
+            getLeavesOfStaff: 'listOfLeaveStaff',
+            getLeavesOfStaffForApproval :'listStaffApproval',
+            updateStatusOfLeaves: 'listStaffApproval',
+            applyForLeaves: 'listOfLeaveStaff'
         },
         staffManagement: {
-            getStaffDetails: '/assets/json/list-of-staff.json'
+            getStaffDetails: 'listOfStaff',
+            createStaff: 'listOfStaff',
+            deleteStaff: 'listOfStaff'
         }
     },
     routes: {

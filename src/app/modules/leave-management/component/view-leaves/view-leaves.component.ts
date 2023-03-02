@@ -28,6 +28,7 @@ export class ViewLeavesComponent implements OnInit {
     ngOnInit(): void {
         this.role = this.sessionStorageService.getRole();
         this.leavesForm = this.fb.group({
+            id: new FormControl(null),
             fromDate:  new FormControl('', [Validators.required,]),
             toDate: new FormControl('', [Validators.required,]),
             reason: new FormControl('', [Validators.required,]),
@@ -36,6 +37,7 @@ export class ViewLeavesComponent implements OnInit {
         if(this.singleApplication?.type !== TypeOfContent.add) {
             this.leavesForm.patchValue(this.singleApplication?.items)
             this.modifyDate();
+            this.leavesForm.disable();
         }
     }
 
@@ -84,7 +86,15 @@ export class ViewLeavesComponent implements OnInit {
         if (this.leavesForm.invalid) {
             return;
         }
-        this.passEntry.emit(this.leavesForm?.value);
+        const formDate = this.leavesForm.get("fromDate")?.value?.month + '-' + this.leavesForm.get("fromDate")?.value?.day + '-' +this.leavesForm.get("fromDate")?.value?.year;
+        const toDate = this.leavesForm.get("toDate")?.value?.month + '-' + this.leavesForm.get("toDate")?.value?.day + '-' +this.leavesForm.get("toDate")?.value?.year;
+        this.leavesForm.controls['fromDate'].setValue(formDate);
+        this.leavesForm.controls['toDate'].setValue(toDate);
+        const data = {
+            type: this.singleApplication?.type,
+            items: this.leavesForm?.value
+        }
+        this.passEntry.emit(data);
         this. close();
     }
 

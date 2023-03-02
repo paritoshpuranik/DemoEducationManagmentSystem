@@ -7,7 +7,6 @@ export interface ISendDataObj <T = any> {
     type?: string;
     items: T;
 }
-
 export interface IDateObj {
     day: number;
     month: number;

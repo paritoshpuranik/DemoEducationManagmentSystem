@@ -8,6 +8,7 @@
             <div class="row">
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>From date</label>
                         <input
                             class="form-control"
                             formControlName="fromDate"
@@ -27,6 +28,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>To date</label>
                         <input
                             class="form-control"
                             formControlName="toDate"
@@ -49,6 +51,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
+                        <label>Reason</label>
                         <textarea
                             formControlName="reason" 
                             placeholder="Reason" 
@@ -68,6 +71,7 @@
 
                 <div class="col-md-12 bottom-margin" *ngIf="role === 'Hod'">
                     <div class="form-group">
+                        <label>Status</label>
                         <label>
                             <input type="radio" value="approved" formControlName="status">
                                 <span>Approved</span>
@@ -81,19 +85,13 @@
                 
                 <div class="col-md-12 bottom-margin" *ngIf="singleApplication?.type !== 'add' && role !== 'Hod'">
                     <div class="form-group">
-                        <input 
-                            formControlName="status" 
-                            placeholder="Status" 
-                            type="status" 
-                            name="status"
-                            class="form-control"
-                            [matKeyboard]="'Azərbaycanca'"
-                        >
+                        <label>Status</label>
+                        <p>{{singleApplication.items.status}}</p>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <button type="submit" [disabled]="!leavesForm.valid" class="btn btn-success">Add Leave</button>
+                    <div class="form-group" *ngIf="singleApplication?.type !== 'view'">
+                        <button type="submit" [disabled]="!leavesForm.valid" class="btn btn-success">Save</button>
                     </div>
                 </div>
               

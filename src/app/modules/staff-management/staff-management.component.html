@@ -22,7 +22,7 @@
                     <td>{{ items.mobile }}</td>
                     <td>
                         <button class="btn-view" (click)="applyForLeaves('view',items)">View</button>
-                        <button (click)="removeStaff(items)">Delete</button>
+                        <button (click)="removeStaff(items.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>

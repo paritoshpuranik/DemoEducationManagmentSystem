@@ -27,6 +27,10 @@ export class SessionStorageService {
         return sessionStorage.getItem('role');
     }
 
+    setRole(role: any) {
+        sessionStorage.setItem('role', role);
+    }
+
     logout() {
         sessionStorage.clear();
         this.router.navigate([AppConfig.routes.auth.login]);
