@@ -4,4 +4,5 @@ export interface IListOfLeaves {
     toDate: string;
     reason: string;
     status: string;
+    userId: number;
 }

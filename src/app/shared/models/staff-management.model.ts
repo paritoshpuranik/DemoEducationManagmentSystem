@@ -1,6 +1,8 @@
 export interface IListOfStaff {
     id: number;
-    fullName: string;
+    name:  string;
     userName: string;
-    mobile: number;
+    contactNumber: number;
+    password: string;
+    userId: number;
 }

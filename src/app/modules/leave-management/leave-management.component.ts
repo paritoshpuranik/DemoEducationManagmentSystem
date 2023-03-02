@@ -17,6 +17,7 @@ export class LeaveManagementComponent extends Base implements OnInit {
     listOfLeaves!: IListOfLeaves[];
     listOfLeavesStaff!: IListOfLeaves[];
     role!: string | null;
+    validatedCount!: IListOfLeaves[];
 
     constructor(
         private readonly leaveManagementService: LeaveManagementService,
@@ -37,24 +38,38 @@ export class LeaveManagementComponent extends Base implements OnInit {
 
     // This will load the list of leaves (role: staff).
     getLeavesOfStaff() {
+        let filterArray: IListOfLeaves[] = [];
         this.leaveManagementService.getLeavesOfStaff() 
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (menu: IListOfLeaves[]) => {
-                this.listOfLeaves = menu;
-                this.listOfLeavesStaff = menu;
-                this.collectionSize = this.listOfLeaves.length;
+                this.validatedCount = menu;
+                const filterData = menu.filter((a:IListOfLeaves) => {
+                    if(a?.userId === this.sessionStorageService.getUser()?.id) {
+                        filterArray.push(a)
+                    }
+                })
+                this.listOfLeaves = filterArray;
+                this.listOfLeavesStaff = filterArray;
+                this.collectionSize = this.listOfLeavesStaff.length;
                 this.refreshItems();
             }
         })
     }
 
     getListOfLeavesApproval() {
+        let filterArray: IListOfLeaves[] = [];
         this.leaveManagementService.getListOfLeavesApproval() 
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (menu: IListOfLeaves[]) => {
-                this.listOfLeaves = menu;
-                this.listOfLeavesStaff = menu;
-                this.collectionSize = this.listOfLeaves.length;
+                this.validatedCount = menu;
+                const filterData = menu.filter((a:IListOfLeaves) => {
+                    if(a?.userId === this.sessionStorageService.getUser()?.id) {
+                        filterArray.push(a)
+                    }
+                })
+                this.listOfLeaves = filterArray;
+                this.listOfLeavesStaff = filterArray;
+                this.collectionSize = this.listOfLeavesStaff.length;
                 this.refreshItems();
             }
         })
@@ -81,13 +96,14 @@ export class LeaveManagementComponent extends Base implements OnInit {
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (item: ISendDataObj) => {
                 if(item.type === TypeOfContent.add) {
-                    let lastElement = this.listOfLeaves[this.listOfLeaves.length - 1];
+                    let lastElement = this.validatedCount[this.validatedCount.length - 1];
                     let data = {
                         id: lastElement.id + 1,
                         fromDate: item?.items?.fromDate,
                         toDate: item?.items?.toDate,
                         reason: item?.items.reason,
-                        status: item?.items?.status
+                        status: item?.items?.status,
+                        userId: this.sessionStorageService.getUser().id
                     }
                     this.leaveManagementService.applyForLeaves(data)
                     .pipe(takeUntil(this.destroy$)).subscribe({
@@ -105,7 +121,8 @@ export class LeaveManagementComponent extends Base implements OnInit {
                         fromDate: item?.items?.fromDate,
                         toDate: item?.items?.toDate,
                         reason: item?.items.reason,
-                        status: item?.items?.status
+                        status: item?.items?.status,
+                        userId: this.sessionStorageService.getUser().id
                     }
                     this.leaveManagementService.updateStatusOfLeaves(data)
                     .pipe(takeUntil(this.destroy$)).subscribe({

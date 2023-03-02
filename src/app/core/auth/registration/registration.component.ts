@@ -33,15 +33,11 @@ export class RegistrationComponent extends Base implements OnInit {
         this.registerForm = this.fb.group({
             name:  new FormControl('', [Validators.required]),
             userName:  new FormControl('', [Validators.required]),
-            contactNumber:  new FormControl('', [Validators.required, Validators.pattern(Regex.regexMobileNumber)]),
-            department:  new FormControl(''),
+            contactNumber:  new FormControl('', [Validators.pattern(Regex.regexMobileNumber)]),
+            department:  new FormControl('',[Validators.required]),
             email:  new FormControl('', [Validators.required, Validators.pattern(Regex.regexHiddenEmail)]),
-            password: new FormControl('')
+            password: new FormControl('', [Validators.required, Validators.pattern(Regex.regexPassword)])
         });
-        if(this.role === TypeOfRole.hod) {
-            this.registerForm.controls['department'].setValidators([Validators.required]);
-            this.registerForm.controls['password'].setValidators([Validators.required, Validators.pattern(Regex.regexPassword)]);
-        }
         this.getStaffDetails();
     }
 
@@ -77,9 +73,11 @@ export class RegistrationComponent extends Base implements OnInit {
         let lastElement = this.listOfStaff[this.listOfStaff.length - 1];
         let data = {
             id: lastElement.id + 1,
-            fullName: this.registerForm.value.name,
+            name: this.registerForm.value.name,
             userName: this.registerForm.value.userName,
-            mobile: this.registerForm.value.contactNumber
+            contactNumber: this.registerForm.value.contactNumber,
+            password: this.registerForm.value.password,
+            userId: this.sessionStorageService.getUser().id
         }
         this.staffManagementService.createStaff(data)
         .pipe(takeUntil(this.destroy$))
@@ -97,12 +95,9 @@ export class RegistrationComponent extends Base implements OnInit {
         })
     }
 
-    // saveInUser() {
-    //     this.usersService.createUser(this.registerForm.value)
-    //     .pipe(takeUntil(this.destroy$)).subscribe({
-    //         next: (user: IUsers[]) => {
-    //         }
-    //     })
-    // }
+    
+    goToLogin() {
+        this.router.navigate([AppConfig.routes.auth.login]);
+    }
 
 }

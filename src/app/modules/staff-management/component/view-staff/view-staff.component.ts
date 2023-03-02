@@ -24,9 +24,10 @@ export class ViewStaffComponent implements OnInit {
     ngOnInit(): void {
         this.staffForm = this.fb.group({
             id: new FormControl(null),
-            fullName:  new FormControl('', [Validators.required]),
-            userName: new FormControl('', [Validators.required,]),
-            mobile: new FormControl('', [Validators.required, Validators.pattern(Regex.regexMobileNumber)]),
+            name:  new FormControl('', [Validators.required]),
+            userName:  new FormControl('', [Validators.required]),
+            contactNumber:  new FormControl('', [Validators.required, Validators.pattern(Regex.regexMobileNumber)]),
+            password: new FormControl('', [Validators.required, Validators.pattern(Regex.regexPassword)])
         });
         if(this.singleApplication?.type !== TypeOfContent.add) {
             this.staffForm.patchValue(this.singleApplication?.items);

@@ -73,7 +73,6 @@
                             [ngClass]="{ 'is-invalid': f['contactNumber'].touched && f['contactNumber'].invalid }"
                         >
                         <div *ngIf="f['contactNumber'].touched && f['contactNumber'].errors" class="invalid-feedback">
-                            <div *ngIf="f['contactNumber'].errors['required']">Contact Number is required</div>
                             <div *ngIf="f['contactNumber'].errors['pattern']">Contact should start wit 6,7,8,9 and must be of 10 digit.</div>
                         </div>
                     </div>
@@ -81,7 +80,7 @@
 
                 <div class="col-md-12 bottom-margin">
                     <div class="form-group">
-                        <label>Department</label>
+                        <label>Role</label>
                             <select
                                 formControlName="department" 
                                 placeholder="Department" 
@@ -119,7 +118,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group btn-div">
+                        <button type="button"  (click)="goToLogin()" class="btn btn-success">Back</button>
                         <button type="submit" [disabled]="!registerForm.valid" class="btn btn-success">Register</button>
                     </div>
                 </div>

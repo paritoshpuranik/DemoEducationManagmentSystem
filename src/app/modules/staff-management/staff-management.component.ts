@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Base } from '@core/base';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GetUserListTableEnum, IApiResponseObj, ISendDataObj, StaffManagementService, TypeOfContent } from '@shared/index';
+import { GetUserListTableEnum, IApiResponseObj, ISendDataObj, SessionStorageService, StaffManagementService, TypeOfContent } from '@shared/index';
 import { IListOfStaff } from '@shared/models/staff-management.model';
 import { takeUntil } from 'rxjs';
 import { ViewStaffComponent } from './component/view-staff/view-staff.component';
@@ -17,11 +17,13 @@ export class StaffManagementComponent extends Base implements OnInit {
     collectionSize!: number;
     listOfStaff!: IListOfStaff[];
     staffList!: IListOfStaff[];
+    validatedCount: any;
     
 
     constructor(
         private readonly staffManagementService: StaffManagementService,
         private readonly modalService: NgbModal,
+        private readonly sessionStorageService: SessionStorageService
     ) { 
         super();
     }
@@ -31,11 +33,18 @@ export class StaffManagementComponent extends Base implements OnInit {
     }
 
     getStaffDetails() {
+        let filterArray: IListOfStaff[] = [];
         this.staffManagementService.getStaffDetails()
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (staff: IListOfStaff[]) => {
-                this.listOfStaff = staff;
-                this.staffList = staff;
+                this.validatedCount = staff;
+                const filterData = staff.filter((a:IListOfStaff) => {
+                    if(a?.userId === this.sessionStorageService.getUser()?.id) {
+                        filterArray.push(a)
+                    }
+                })
+                this.listOfStaff = filterArray;
+                this.staffList = filterArray;
                 this.collectionSize = this.listOfStaff.length;
                 this.refreshItems();
             }
@@ -63,12 +72,14 @@ export class StaffManagementComponent extends Base implements OnInit {
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (item: ISendDataObj) => {
                 if(item.type === TypeOfContent.add) {
-                    let lastElement = this.listOfStaff[this.listOfStaff.length - 1];
+                    let lastElement = this.validatedCount[this.validatedCount.length - 1];
                     let data = {
-                      id: lastElement.id + 1,
-                        fullName: item?.items?.fullName,
+                        id: lastElement.id + 1,
+                        name: item?.items?.name,
                         userName: item?.items?.userName,
-                        mobile: item?.items?.mobile
+                        contactNumber: item?.items?.contactNumber,
+                        password: item?.items?.password,
+                        userId: this.sessionStorageService.getUser().id
                     }
                     this.staffManagementService.createStaff(data)
                     .pipe(takeUntil(this.destroy$)).subscribe({
@@ -80,9 +91,11 @@ export class StaffManagementComponent extends Base implements OnInit {
                 } else {
                     let data = {
                         id: item?.items?.id,
-                        fullName: item?.items?.fullName,
+                        name: item?.items?.name,
                         userName: item?.items?.userName,
-                        mobile: item?.items?.mobile
+                        contactNumber: item?.items?.contactNumber,
+                        password: item?.items?.password,
+                        userId: this.sessionStorageService.getUser().id
                     }
                     this.staffManagementService.updateStaff(data)
                     .pipe(takeUntil(this.destroy$)).subscribe({

@@ -57,6 +57,15 @@
       "email": "t***@gmail.com",
       "password": "Test@1234",
       "id": 6
+    },
+    {
+      "name": "Paritosh Puranik",
+      "userName": "paritosh",
+      "contactNumber": null,
+      "department": "staff",
+      "email": "p***@gmail.com",
+      "password": "Test@1234",
+      "id": 7
     }
   ],
   "menu": [
@@ -79,64 +88,96 @@
       "fromDate": "3-10-2023",
       "toDate": "3-14-2023",
       "reason": "Family functionss",
-      "status": "approved"
+      "status": "Approved",
+      "userId": 1
     },
     {
       "id": 2,
       "fromDate": "03-25-2023",
       "toDate": "03-28-2023",
-      "reason": "Vacations"
+      "reason": "Vacations",
+      "userId": 2
     },
     {
       "id": 3,
       "fromDate": "5-20-2023",
       "toDate": "5-25-2023",
       "reason": "Vacations",
-      "status": "reject"
+      "status": "reject",
+      "userId": 6
     },
     {
       "id": 4,
-      "fromDate": "04-10-2023",
-      "toDate": "04-18-2023",
-      "reason": "Personal work"
+      "fromDate": "4-10-2023",
+      "toDate": "4-18-2023",
+      "reason": "Personal work",
+      "status": "Reject",
+      "userId": 1
     },
     {
       "id": 5,
-      "fromDate": "04-20-2023",
-      "toDate": "04-25-2023",
-      "reason": "Medical Emergency"
+      "fromDate": "4-20-2023",
+      "toDate": "4-25-2023",
+      "reason": "Medical Emergency",
+      "status": "Approved",
+      "userId": 1
     }
   ],
   "listOfStaff": [
     {
       "id": 1,
-      "fullName": "Testtest",
+      "name": "Testtest",
       "userName": "testets",
-      "mobile": 8978967800
+      "contactNumber": 8978967800,
+      "password": "Test@1234",
+      "userId": 1
     },
     {
       "id": 4,
-      "fullName": "Test",
+      "name": "Test",
       "userName": "test",
-      "mobile": 8898979988
+      "contactNumber": 8898979988,
+      "password": "Test@1234",
+      "userId": 2
     },
     {
       "id": 5,
-      "fullName": "TestUser",
+      "name": "TestUser",
       "userName": "user1",
-      "mobile": 9898797897
+      "contactNumber": 9898797897,
+      "password": "Test@1234",
+      "userId": 6
     },
     {
       "id": 6,
-      "fullName": "Test",
+      "name": "Test",
       "userName": "Testuser",
-      "mobile": 8987977900
+      "contactNumber": 8987977900,
+      "userId": 6
     },
     {
       "id": 7,
-      "fullName": "Test",
+      "name": "Test",
       "userName": "TestName",
-      "mobile": 8899987779
+      "contactNumber": 8899987779,
+      "password": "Test@1234",
+      "userId": 1
+    },
+    {
+      "id": 8,
+      "name": "Paritosh Puranik",
+      "userName": "paritosh",
+      "contactNumber": null,
+      "password": "Test@1234",
+      "userId": 1
+    },
+    {
+      "id": 9,
+      "name": "Test",
+      "userName": "Test12",
+      "password": "Test@1234",
+      "contactNumber": 8899987779,
+      "userId": 1
     }
   ],
   "listOfLeaveStaff": [
@@ -145,112 +186,143 @@
       "fromDate": "12-01-2022",
       "toDate": "12-10-2022",
       "reason": "Family function",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 3
     },
     {
       "id": 2,
       "fromDate": "04-20-2022",
       "toDate": "04-25-2022",
       "reason": "Vacations",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 4
     },
     {
       "id": 3,
       "fromDate": "05-20-2022",
       "toDate": "05-25-2022",
       "reason": "Vacations",
-      "status": "Rejected"
+      "status": "Rejected",
+      "userId": 5
     },
     {
       "id": 4,
       "fromDate": "10-10-2022",
       "toDate": "10-18-2022",
       "reason": "Personal work",
-      "status": "Rejected"
+      "status": "Rejected",
+      "userId": 5
     },
     {
       "id": 5,
       "fromDate": "04-20-2022",
       "toDate": "04-25-2022",
       "reason": "Medical Emergency",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 4
     },
     {
       "id": 6,
       "fromDate": "12-28-2022",
       "toDate": "01-05-2023",
       "reason": "New-Years",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 4
     },
     {
       "id": 7,
       "fromDate": "10-10-2022",
       "toDate": "10-18-2022",
       "reason": "Personal work",
-      "status": "Rejected"
+      "status": "Rejected",
+      "userId": 4
     },
     {
       "id": 8,
       "fromDate": "05-20-2022",
       "toDate": "05-25-2022",
       "reason": "Vacations",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 3
     },
     {
       "id": 9,
       "fromDate": "12-01-2022",
       "toDate": "12-10-2022",
       "reason": "Family function",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 3
     },
     {
       "id": 10,
       "fromDate": "04-20-2022",
       "toDate": "04-25-2022",
       "reason": "Medical Emergency",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 5
     },
     {
       "id": 11,
       "fromDate": "12-01-2022",
       "toDate": "12-10-2022",
       "reason": "Family function",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 4
     },
     {
       "id": 12,
       "fromDate": "12-01-2022",
       "toDate": "12-10-2022",
       "reason": "Family function",
-      "status": "Rejected"
+      "status": "Rejected",
+      "userId": 3
     },
     {
       "id": 13,
       "fromDate": "12-01-2022",
       "toDate": "12-10-2022",
       "reason": "Family function",
-      "status": "Rejected"
+      "status": "Rejected",
+      "userId": 5
     },
     {
       "id": 14,
       "fromDate": "04-20-2022",
       "toDate": "04-25-2022",
       "reason": "Medical Emergency",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 4
     },
     {
       "id": 15,
       "fromDate": "02-10-2022",
       "toDate": "02-15-2022",
       "reason": "Medical Emergency",
-      "status": "Approved"
+      "status": "Approved",
+      "userId": 3
     },
     {
       "id": 16,
       "fromDate": "3-4-2023",
       "toDate": "3-9-2023",
       "reason": "Medical Reson Test",
-      "status": ""
+      "status": "Pending",
+      "userId": 4
+    },
+    {
+      "id": 17,
+      "fromDate": "3-23-2023",
+      "toDate": "3-28-2023",
+      "reason": "Added by bridge",
+      "status": "pending",
+      "userId": 3
+    },
+    {
+      "id": 18,
+      "fromDate": "3-10-2023",
+      "toDate": "3-14-2023",
+      "reason": "Test added test",
+      "status": "Pending"
     }
   ]
 }

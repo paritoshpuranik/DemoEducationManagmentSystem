@@ -17,9 +17,9 @@
             <tbody>
                 <tr *ngFor="let items of staffList">
                     <th>{{ items.id | number }}</th>
-                    <td>{{ items.fullName }}</td>
+                    <td>{{ items.name }}</td>
                     <td>{{ items.userName }}</td>
-                    <td>{{ items.mobile }}</td>
+                    <td>{{ items.contactNumber }}</td>
                     <td>
                         <button class="btn-view" (click)="applyForLeaves('view',items)">View</button>
                         <button (click)="removeStaff(items.id)">Delete</button>

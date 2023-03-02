@@ -67,4 +67,8 @@ export class LoginComponent extends Base implements OnInit {
         this.router.navigate([AppConfig.routes.auth.registration]);
     }
 
+    goToLogin() {
+        this.router.navigate([AppConfig.routes.auth.login]);
+    }
+
 }

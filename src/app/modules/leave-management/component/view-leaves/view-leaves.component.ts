@@ -32,13 +32,12 @@ export class ViewLeavesComponent implements OnInit {
             fromDate:  new FormControl('', [Validators.required,]),
             toDate: new FormControl('', [Validators.required,]),
             reason: new FormControl('', [Validators.required,]),
-            status: new FormControl(''),
+            status: new FormControl('Pending'),
         });
+       
         if(this.singleApplication?.type !== TypeOfContent.add) {
             this.leavesForm.patchValue(this.singleApplication?.items)
             this.modifyDate();
-            this.leavesForm.disable();
-            this.leavesForm.controls['status'].enable();
         }
     }
 
@@ -93,7 +92,7 @@ export class ViewLeavesComponent implements OnInit {
         this.leavesForm.controls['toDate'].setValue(toDate);
         const data = {
             type: this.singleApplication?.type,
-            items: this.leavesForm?.value
+            items: this.leavesForm.value
         }
         this.passEntry.emit(data);
         this. close();
