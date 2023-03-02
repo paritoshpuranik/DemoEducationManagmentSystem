@@ -89,6 +89,7 @@ export class RegistrationComponent extends Base implements OnInit {
         ).subscribe({
             next: (user: IUsers[]) => {
                 alert('login successful ');
+                this.sessionStorageService.setUser(user);
                 this.sessionStorageService.setRole(this.registerForm.value?.department)
                 this.router.navigate([AppConfig.routes.modules.dashboard]);
             }

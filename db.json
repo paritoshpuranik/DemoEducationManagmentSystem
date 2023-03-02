@@ -66,6 +66,33 @@
       "email": "p***@gmail.com",
       "password": "Test@1234",
       "id": 7
+    },
+    {
+      "name": "James",
+      "userName": "james",
+      "contactNumber": "",
+      "department": "Hod",
+      "email": "j***@gmail.com",
+      "password": "Test@1234",
+      "id": 8
+    },
+    {
+      "name": "kren",
+      "userName": "kren",
+      "contactNumber": 6809989897,
+      "department": "staff",
+      "email": "k***@gmil.com",
+      "password": "Test@1234",
+      "id": 9
+    },
+    {
+      "name": "test",
+      "userName": "test",
+      "contactNumber": 7897978778,
+      "department": "staff",
+      "email": "t***@gmail.com",
+      "password": "Test@1234",
+      "id": 10
     }
   ],
   "menu": [
@@ -178,6 +205,34 @@
       "password": "Test@1234",
       "contactNumber": 8899987779,
       "userId": 1
+    },
+    {
+      "id": 10,
+      "name": "James",
+      "userName": "james",
+      "contactNumber": "",
+      "password": "Test@1234"
+    },
+    {
+      "id": 11,
+      "name": "test",
+      "userName": "test",
+      "contactNumber": 9874873583,
+      "password": "Test@1234"
+    },
+    {
+      "id": 12,
+      "name": "kren",
+      "userName": "kren",
+      "contactNumber": 6809989897,
+      "password": "Test@1234"
+    },
+    {
+      "id": 13,
+      "name": "test",
+      "userName": "test",
+      "contactNumber": 7897978778,
+      "password": "Test@1234"
     }
   ],
   "listOfLeaveStaff": [
@@ -322,6 +377,27 @@
       "fromDate": "3-10-2023",
       "toDate": "3-14-2023",
       "reason": "Test added test",
+      "status": "Pending"
+    },
+    {
+      "id": 19,
+      "fromDate": "3-17-2023",
+      "toDate": "3-21-2023",
+      "reason": "Added kren",
+      "status": "Pending"
+    },
+    {
+      "id": 20,
+      "fromDate": "3-10-2023",
+      "toDate": "3-13-2023",
+      "reason": "Test vai",
+      "status": "Pending"
+    },
+    {
+      "id": 21,
+      "fromDate": "3-9-2023",
+      "toDate": "3-10-2023",
+      "reason": "medical",
       "status": "Pending"
     }
   ]
