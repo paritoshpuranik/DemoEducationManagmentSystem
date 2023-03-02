@@ -81,7 +81,7 @@ export class LeaveManagementComponent extends Base implements OnInit {
         .pipe(takeUntil(this.destroy$)).subscribe({
             next: (item: ISendDataObj) => {
                 if(item.type === TypeOfContent.add) {
-                    let lastElement = this.listOfLeavesStaff[this.listOfLeavesStaff.length - 1];
+                    let lastElement = this.listOfLeaves[this.listOfLeaves.length - 1];
                     let data = {
                         id: lastElement.id + 1,
                         fromDate: item?.items?.fromDate,

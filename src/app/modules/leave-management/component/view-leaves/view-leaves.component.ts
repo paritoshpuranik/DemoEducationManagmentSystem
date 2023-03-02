@@ -38,6 +38,7 @@ export class ViewLeavesComponent implements OnInit {
             this.leavesForm.patchValue(this.singleApplication?.items)
             this.modifyDate();
             this.leavesForm.disable();
+            this.leavesForm.controls['status'].enable();
         }
     }
 
