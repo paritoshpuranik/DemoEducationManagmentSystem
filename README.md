@@ -28,7 +28,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # DemoEducationManagmentSystem
 
 ## As we are using a local JSON file to manipulate data, here are the login credentials.
-For HOD:   Username: johnny
-           password: Johnny@123
-For Staff: Username: BridgeStone
-           password: Bridge@123 
+Login with HOD:  
+username: johnny
+password: Test@1234
+
+Login with Staff:
+username: BridgeStone
+password: Test@1234
+
+## To run JSON server 
+npx json-server --watch db.json
+
+           
+           
+           
