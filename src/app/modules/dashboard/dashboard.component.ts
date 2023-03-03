@@ -14,6 +14,7 @@ export class DashboardComponent extends Base implements OnInit {
     totalCountOfLeaves!: number;
     approvedCount!: number;
     rejectedCount!: number;
+    pendingCount!: number;
     role!: string | null;
     validatedCount!: IListOfStaff[];
     listOfStaff!: IListOfStaff[];
@@ -74,15 +75,21 @@ export class DashboardComponent extends Base implements OnInit {
     totalLeaveApprovedAndRejected() {
         let arrayOfApproved: IListOfLeaves[] = [];
         let arrayOfReject: IListOfLeaves[] = [];
+        let arrayOfPending: IListOfLeaves[] = [];
         this.listOfLeaves.filter((item) => {
             if(item.status === 'Approved') {
                 arrayOfApproved.push(item);
             } else {
-                arrayOfReject.push(item);
+                if(item.status === 'Rejected') {
+                    arrayOfReject.push(item);
+                } else {
+                    arrayOfPending.push(item);
+                }
             }
         })
         this.approvedCount = arrayOfApproved.length;
         this.rejectedCount = arrayOfReject.length;
+        this.pendingCount = arrayOfPending.length;
     }
 
 }

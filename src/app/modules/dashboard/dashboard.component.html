@@ -9,7 +9,7 @@
         </div>
         
          <!-- Role is HOD Ends -->
-        <div *ngIf="role !== 'Hod'">
+        <div class="leaves-div" *ngIf="role !== 'Hod'">
             <div class="card">
                 <div class="card-body">
                     <h3>Total Leaves</h3>
@@ -28,6 +28,13 @@
                 <div class="card-body">
                     <h3>Total Leaves Rejected</h3>
                     <p>{{rejectedCount}}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Total Leaves Pending</h3>
+                    <p>{{pendingCount}}</p>
                 </div>
             </div>
         </div>
