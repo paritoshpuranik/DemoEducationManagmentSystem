@@ -57,6 +57,7 @@ export class LoginComponent extends Base implements OnInit {
         const result = this.usersList.find( ({ userName, password }) => userName === this.loginForm.value.userName && password === this.loginForm.value.password);
         if(result) {
             this.sessionStorageService.setUser(result);
+            this.sessionStorageService.setRole(result.department);
             this.router.navigate([AppConfig.routes.modules.dashboard]);
         } else {
             this.showErrorMessage = true;

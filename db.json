@@ -93,6 +93,15 @@
       "email": "t***@gmail.com",
       "password": "Test@1234",
       "id": 10
+    },
+    {
+      "name": "Test12",
+      "userName": "TestNew",
+      "contactNumber": 8965677869,
+      "department": "staff",
+      "email": "t***@gmail.com",
+      "password": "Test@1234",
+      "id": 11
     }
   ],
   "menu": [
@@ -232,6 +241,13 @@
       "name": "test",
       "userName": "test",
       "contactNumber": 7897978778,
+      "password": "Test@1234"
+    },
+    {
+      "id": 14,
+      "name": "Test12",
+      "userName": "TestNew",
+      "contactNumber": 8965677869,
       "password": "Test@1234"
     }
   ],
@@ -399,6 +415,14 @@
       "toDate": "3-10-2023",
       "reason": "medical",
       "status": "Pending"
+    },
+    {
+      "id": 22,
+      "fromDate": "3-10-2023",
+      "toDate": "3-14-2023",
+      "reason": "Medical ",
+      "status": "Pending",
+      "userId": 11
     }
   ]
 }
